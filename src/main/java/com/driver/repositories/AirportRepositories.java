@@ -36,6 +36,22 @@ public class AirportRepositories {
     }
 
     public String getLargestAirportName() {
+        /*
+        String ans = "";
+        int terminals = 0;
+        for(Airport airport : airportDb.values()){
+
+            if(airport.getNoOfTerminals()>terminals){
+                ans = airport.getAirportName();
+                terminals = airport.getNoOfTerminals();
+            }else if(airport.getNoOfTerminals()==terminals){
+                if(airport.getAirportName().compareTo(ans)<0){
+                    ans = airport.getAirportName();
+                }
+            }
+        }
+        return ans;
+        */
         String ans = "";
         int max = -1;
         for(Airport airport : airportDB.values()){
@@ -44,7 +60,7 @@ public class AirportRepositories {
                 ans = airport.getAirportName();
             }
             else if(airport.getNoOfTerminals() == max){
-                if(ans.compareTo(airport.getAirportName()) < 0){
+                if(airport.getAirportName().compareTo(ans) < 0){
                     ans = airport.getAirportName();
                 }
             }
