@@ -198,6 +198,7 @@ public class AirportRepositories {
         int variableFare = (noOfPeopleBooked*(noOfPeopleBooked+1))*50;
         int fixedFare = 3000*noOfPeopleBooked;
         int totalFare = variableFare + fixedFare;
+        return totalFare;
         /*
         int ans = 0;
         for(int i=1; i<=noOfPassengers; i++){
