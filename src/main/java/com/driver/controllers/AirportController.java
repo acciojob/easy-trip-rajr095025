@@ -14,7 +14,7 @@ import java.util.Date;
 @RestController
 public class AirportController {
 
-    AirportServices airportServices = new AirportServices;
+    AirportServices airportServices = new AirportServices();
     @PostMapping("/add_airport")
     public String addAirport(@RequestBody Airport airport){
 
