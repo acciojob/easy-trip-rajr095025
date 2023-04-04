@@ -90,18 +90,50 @@ public class AirportRepositories {
     }
 
     public String bookATicket(Integer flightId, Integer passengerId) {
+        /*
+        if(Objects.nonNull(flightToPassengerDb.get(flightId)) &&(flightToPassengerDb.get(flightId).size()<flightDb.get(flightId).getMaxCapacity())){
+
+
+            List<Integer> passengers =  flightToPassengerDb.get(flightId);
+
+            if(passengers.contains(passengerId)){
+                return "FAILURE";
+            }
+
+            passengers.add(passengerId);
+            flightToPassengerDb.put(flightId,passengers);
+            return "SUCCESS";
+        }
+        else if(Objects.isNull(flightToPassengerDb.get(flightId))){
+            flightToPassengerDb.put(flightId,new ArrayList<>());
+            List<Integer> passengers =  flightToPassengerDb.get(flightId);
+
+            if(passengers.contains(passengerId)){
+                return "FAILURE";
+            }
+
+            passengers.add(passengerId);
+            flightToPassengerDb.put(flightId,passengers);
+            return "SUCCESS";
+
+        }
+        return "FAILURE";
+        */
         Flight flight = flightDB.get(flightId);
         Passenger passenger = passengerDB.get(passengerId);
         HashSet<Passenger> passengerList = flightPassengerDB.get(flight);
         HashSet<Flight> flightList = passengerFlightDB.get(passenger);
-        if(flightList.contains(flight)){
+        if(Objects.nonNull(flightList) && flightList.contains(flight)){
             return "FAILURE";
         }
-        else if(flight.getMaxCapacity() == passengerList.size()){
+        else if(Objects.nonNull(passengerList)  && flight.getMaxCapacity() == passengerList.size()){
             return "FAILURE";
         }
-        if(passengerList.isEmpty()){
+        if(!Objects.nonNull(passengerList)){
             passengerList = new HashSet<>();
+        }
+        if(!Objects.nonNull(flightList)) {
+            flightList = new HashSet<>();
         }
         passengerList.add(passenger);
         flightList.add(flight);
@@ -178,3 +210,4 @@ public class AirportRepositories {
         return ans;
     }
 }
+
