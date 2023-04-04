@@ -194,12 +194,25 @@ public class AirportRepositories {
     public int calculateRevenueOfAFlight(Integer flightId) {
         Flight flight = flightDB.get(flightId);
         HashSet passengerList = flightPassengerDB.get(flight);
-        int noOfPassengers = passengerList.size();
+        int noOfPeopleBooked = passengerList.size();
+        int variableFare = (noOfPeopleBooked*(noOfPeopleBooked+1))*50;
+        int fixedFare = 3000*noOfPeopleBooked;
+        int totalFare = variableFare + fixedFare;
+        /*
         int ans = 0;
         for(int i=1; i<=noOfPassengers; i++){
             ans += (3000 + 50*i);
         }
         return ans;
+        */
+        /*
+        int noOfPeopleBooked = flightToPassengerDb.get(flightId).size();
+        int variableFare = (noOfPeopleBooked*(noOfPeopleBooked+1))*25;
+        int fixedFare = 3000*noOfPeopleBooked;
+        int totalFare = variableFare + fixedFare;
+
+        return totalFare;
+        */
     }
 }
 
