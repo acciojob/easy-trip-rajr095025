@@ -195,7 +195,7 @@ public class AirportRepositories {
         Flight flight = flightDB.get(flightId);
         HashSet passengerList = flightPassengerDB.get(flight);
         int noOfPeopleBooked = passengerList.size();
-        int variableFare = (noOfPeopleBooked*(noOfPeopleBooked+1))*50;
+        int variableFare = (noOfPeopleBooked*(noOfPeopleBooked+1))*25;
         int fixedFare = 3000*noOfPeopleBooked;
         int totalFare = variableFare + fixedFare;
         return totalFare;
